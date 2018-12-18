@@ -6,7 +6,8 @@ import Filter from './Filter'
 
 const ResultList = ({meals, actions}) => (
     <div>
-        <Filter filter={actions.setVisibilityFilter}></Filter>
+        {(meals.allMeals.length !== 0 || meals.errors.length !== 0)
+        && <Filter filter={actions.setVisibilityFilter}></Filter>}
         <ErrorMessageList errors={meals.errors}/>
         <MealList allMeals={meals.allMeals} {...actions}/>
     </div>

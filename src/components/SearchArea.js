@@ -1,18 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchButton from './SearchButton'
+import SearchItemList from './SearchItemList'
 
-const SearchArea = ({filteredMeals, actions}) => (
+const SearchArea = ({querys, actions}) => (
 
-    <SearchButton onClick={() => actions.showMeal([{
-        name: 'Bob',
-        from: '2017-01-11',
-        to: '2017-01-10',
-    },{
-        name: 'Nancy',
-        from: '2017-01-11',
-        to: '2017-01-12',
-    }])}/>
+    <div>
+        <SearchItemList querys={querys} {...actions}/>
+        <SearchButton onClick={() => actions.showMeal(querys.search)}/>
+    </div>
 
 )
 

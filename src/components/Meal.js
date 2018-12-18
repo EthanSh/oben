@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 const Meal = ({meal, complete}) => {
     let date = new Date(meal.date)
-
-    date = date.getMonth()+1 +'-'+date.getDay() + '-' + date.getFullYear()
+    console.log(meal.date)
+    date = (date.getMonth()+1) + '-'+ (date.getDate()-1) + '-' + date.getFullYear()
 
     let id = meal.id
 

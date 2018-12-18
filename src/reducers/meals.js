@@ -22,13 +22,12 @@ export default function retriveMeals(state = initialState, action = initialActio
                 let dateRange = [];
                 let start = new Date(query.from);
                 let end = new Date(query.to);
-
                 while(start <= end){
                     dateRange.push(start);
                     let newDate = start.setDate(start.getDate() + 1);
                     start = new Date(newDate);
                 }
-
+                console.log(dateRange)
                 if(new Date(query.from) > new Date(query.to)){
                     result.errors.push(query.name)
                 }else{
