@@ -1,15 +1,15 @@
-import {FETCH_RESULT} from "../constants/ActionTypes";
+import {FETCH_RESULT, FINISH_MEAL} from "../constants/ActionTypes";
 
 const initialState = {
     allMeals: [],
     errors: []
 }
 
-export default function retriveMeals(state = initialState, action = {type: FETCH_RESULT, querys:[{
-        name: 'Bob',
-        from: '2017-01-11',
-        to: '2017-01-10'
-    }]}) {
+const initialAction = {
+    type: ''
+}
+
+export default function retriveMeals(state = initialState, action = initialAction) {
 
     switch (action.type) {
         case FETCH_RESULT:
@@ -17,6 +17,7 @@ export default function retriveMeals(state = initialState, action = {type: FETCH
                 allMeals:[],
                 errors:[]
             }
+            let index = 0;
             action.querys.forEach( query => {
                 let dateRange = [];
                 let start = new Date(query.from);
@@ -32,14 +33,20 @@ export default function retriveMeals(state = initialState, action = {type: FETCH
                     result.errors.push(query.name)
                 }else{
                     dateRange.forEach(date => {
-                        result.allMeals.push({name: query.name, date: date, type:'Breakfast', completed: false})
-                        result.allMeals.push({name: query.name, date: date, type:'Lunch', completed: false})
-                        result.allMeals.push({name: query.name, date: date, type:'Dinner', completed: false})
+                        result.allMeals.push({name: query.name, date: date, type:'Breakfast', completed: false, id: index++})
+                        result.allMeals.push({name: query.name, date: date, type:'Lunch', completed: false, id: index++})
+                        result.allMeals.push({name: query.name, date: date, type:'Dinner', completed: false, id: index++})
                     })
                 }
             })
 
             return result
+        case FINISH_MEAL:
+            let newAllMeals = state.allMeals.map( meal => meal.id === action.id
+                ?{...meal, completed: !meal.completed} : meal
+            )
+
+            return {...state, allMeals: newAllMeals}
         default:
             return state
     }

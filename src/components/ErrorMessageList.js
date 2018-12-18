@@ -13,7 +13,7 @@ const ErrorMessageList = ({errors}) => (
 )
 
 ErrorMessageList.propTypes = {
-    name: PropTypes.string.isRequired
+    errors: PropTypes.array.isRequired
 }
 
 export default ErrorMessageList

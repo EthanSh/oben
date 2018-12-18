@@ -8,15 +8,15 @@ const ResultList = ({meals, actions}) => (
     <div>
         <Filter filter={actions.setVisibilityFilter}></Filter>
         <ErrorMessageList errors={meals.errors}/>
-        <MealList meals={meals.allMeals}/>
+        <MealList allMeals={meals.allMeals} {...actions}/>
     </div>
 )
 
 ResultList.propTypes = {
-    meals: PropTypes.objectOf(PropTypes.shape({
-        errors: PropTypes.array,
-        allMeals: PropTypes.array
-    }).isRequired).isRequired
+    meals: PropTypes.shape({
+        errors: PropTypes.array.isRequired,
+        allMeals: PropTypes.array.isRequired
+    }).isRequired
 }
 
 export default ResultList

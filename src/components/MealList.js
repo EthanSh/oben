@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Meal from './Meal'
 
-const MealList = ({meals}) => (
+const MealList = ({allMeals, finishMeal}) => (
     <ul className="mealList">
-        {meals.map( (meal, index) =>
-            <Meal key={index} meal={meal} />
+        {allMeals.map( (meal, index) =>
+            <Meal key={index} meal={meal} complete={finishMeal}/>
         )}
     </ul>
 )
 
 MealList.propTypes = {
-    meals: PropTypes.object.isRequired
+    allMeals: PropTypes.array.isRequired
 }
 
 export default MealList 

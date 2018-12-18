@@ -1,5 +1,6 @@
 export const ADD_MEAL = 'ADD_MEAL'
 export const DELETE_MEAL = 'DELETE_MEAL'
 export const EDIT_MEAL = 'EDIT_MEAL'
+export const FINISH_MEAL = 'FINISH_MEAL'
 export const FETCH_RESULT = 'FETCH_RESULT'
 export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER"

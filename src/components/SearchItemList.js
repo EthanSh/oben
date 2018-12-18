@@ -8,8 +8,6 @@ const SearchItemList = ({}) => (
 
 )
 
-
-
 SearchItemList.propTypes = {
 
 }
