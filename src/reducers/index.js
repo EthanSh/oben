@@ -1,5 +1,7 @@
-import { conbineReducers } from 'redux'
+import { combineReducers } from 'redux'
 
+import meals from './meals'
 
+import visibilityFilter from './visibilityFilter'
 
-export default conbineReducers({})
+export default combineReducers( {meals, visibilityFilter} )
