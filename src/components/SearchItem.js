@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 export default class SearchItem extends Component {
     static propTypes = {
@@ -13,9 +17,10 @@ export default class SearchItem extends Component {
         placeholder: 'Place input name here'
     }
 
-    handleChange = ( e ) => {
-        let key = e.target.name
-        this.setState({ [key]: e.target.value })
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
     }
 
     handleSave = () => {
@@ -36,13 +41,15 @@ export default class SearchItem extends Component {
 
     render() {
         return (
-            <div>
-                <div>{this.state.name}{this.state.from}{this.state.to}</div>
-                <input type="text" name="name" placeholder={this.state.placeholder} value={this.state.name} onChange={this.handleChange}/>
-                <input type="date" name="from" value={this.state.from} onChange={this.handleChange}/>
-                <input type="date" name="to" value={this.state.to} onChange={this.handleChange}/>
-                <button onClick={this.handleSave}>Add</button>
-            </div>
+            <Grid container spacing={24} justify="center" alignItems="center" alignContent="center">
+                <Grid item >Input Stay Here:</Grid>
+                <Grid item ><TextField placeholder={this.state.placeholder} value={this.state.name} onChange={this.handleChange('name')}/></Grid>
+                <Grid item ><TextField type="date"  value={this.state.from} onChange={this.handleChange('from')}/></Grid>
+                <Grid item ><TextField type="date"  value={this.state.to} onChange={this.handleChange('to')}/></Grid>
+                <Grid item ><Fab size="small" color="primary" aria-label="Add" onClick={this.handleSave}>
+                    <AddIcon></AddIcon>
+                </Fab></Grid>
+            </Grid>
         )
     }
 }

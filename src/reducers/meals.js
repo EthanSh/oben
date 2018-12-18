@@ -38,6 +38,30 @@ export default function retriveMeals(state = initialState, action = initialActio
                     })
                 }
             })
+            let mealType = {
+                Breakfast: 0,
+                Lunch: 1,
+                Dinner: 2
+            }
+            result.allMeals.sort((a,b) => {
+                if(a.date<b.date){
+                    return -1;
+                }else if(a.date>b.date){
+                    return 1;
+                }else{
+                    if(mealType[a.type] < mealType[b.type]){
+                        return -1;
+                    }else if(mealType[a.type] > mealType[b.type]){
+                        return 1
+                    }else{
+                        if(a.name < b.name){
+                            return -1;
+                        }else{
+                            return 1;
+                        }
+                    }
+                }
+            })
 
             return result
         case FINISH_MEAL:

@@ -1,5 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Checkbox from '@material-ui/core/Checkbox';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 
 const Meal = ({meal, complete}) => {
     let date = new Date(meal.date)
@@ -9,12 +13,15 @@ const Meal = ({meal, complete}) => {
     let id = meal.id
 
     return (
-
-        <li>
-            <input type="checkbox" checked={meal.completed} onChange={() => complete(id)}/>
-            <div className="Meal">{meal.type} for {meal.name} on {date}</div>
-        </li>
-
+        <div>
+            <ListItem>
+                {/*<input type="checkbox" checked={meal.completed} onChange={() => complete(id)}/>*/}
+                <Checkbox checked={meal.completed} onChange={() => complete(id)}/>
+                {/*<div className="Meal"></div>*/}
+                <ListItemText primary={`${meal.type} for ${meal.name} on ${date}`} />
+            </ListItem>
+            <Divider />
+        </div>
     )
 }
 

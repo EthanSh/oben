@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Button from '@material-ui/core/Button';
+
+let searchButtonStyle = {
+    float: 'right'
+}
 
 const SearchButton = ({onClick}) => (
 
-    <button onClick={onClick}>GET MEALS SCHEDULES</button>
+    <Button style={searchButtonStyle} variant="outlined" color="primary" onClick={onClick}>GET MEALS SCHEDULES</Button>
 
 )
 
